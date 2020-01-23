@@ -389,6 +389,10 @@ public class OCFileListFragment extends ExtendedListFragment implements
                     currentSearchType = SearchType.RECENTLY_MODIFIED_SEARCH;
                     break;
 
+                case SHARED_FILTER:
+                    currentSearchType = SearchType.SHARED_FILTER;
+                    break;
+
                 default:
                     // do nothing
                     break;
@@ -1720,7 +1724,8 @@ public class OCFileListFragment extends ExtendedListFragment implements
     private boolean isSearchEventSet(SearchEvent event) {
         return event != null && event.getSearchType() != null &&
             (!TextUtils.isEmpty(event.getSearchQuery()) ||
-                event.searchType == SearchRemoteOperation.SearchType.SHARED_SEARCH)
+                event.searchType == SearchRemoteOperation.SearchType.SHARED_SEARCH ||
+                event.searchType == SearchRemoteOperation.SearchType.SHARED_FILTER)
             && event.getUnsetType() != null;
     }
 
